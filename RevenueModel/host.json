@@ -1,0 +1,22 @@
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+                "isEnabled": true,
+                "excludedTypes": "Request"
+            }
+        },
+        "logLevel": {
+            "default": "Information",
+            "Function": "Debug",
+            "Host.Results": "Debug",
+            "Host.Aggregator": "Debug"
+        }
+    },
+    "extensions": {
+        "durableTask": {
+            "hubName": "RevenueProjectionsHub"
+        }
+    }
+}
