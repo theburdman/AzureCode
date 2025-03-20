@@ -1,0 +1,12 @@
+azure-functions
+pandas
+numpy
+scikit-learn
+requests
+azure-storage-blob
+openpyxl
+lxml
+xgboost
+azure-storage-file-share
+html5lib
+bs4
