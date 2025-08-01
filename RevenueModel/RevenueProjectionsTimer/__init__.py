@@ -426,6 +426,13 @@ def process_financial_data(financials: dict) -> pd.DataFrame:
     backlogPillarProjection.reset_index(drop = False, inplace = True)
     backlogPillarProjection.rename(columns = {'Distribution Center': 'DC_BL', 'Government': 'GOV_BL', 'Healthcare': 'HC_BL', 'Las Vegas': 'LV_BL', 'Other': 'OTH_BL', 'St. Louis': 'STL_BL', 'US Postal Service': 'USPS_BL'}, inplace = True)
     backlogPillarProjection = backlogPillarProjection.fillna(0)
+    
+    # Ensure all expected columns exist with zeros if missing
+    expected_columns = ['date', 'DC_BL', 'GOV_BL', 'HC_BL', 'LV_BL', 'OTH_BL', 'STL_BL', 'USPS_BL']
+    for col in expected_columns:
+        if col not in backlogPillarProjection.columns:
+            backlogPillarProjection[col] = 0
+            logging.info(f"Added missing column {col} with zeros")
 
     backlogSilos = backlogSilos.merge(backlogPillarProjection, on = 'date', how = 'left')
 
